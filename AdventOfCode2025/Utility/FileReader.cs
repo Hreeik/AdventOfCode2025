@@ -30,6 +30,8 @@ namespace AdventOfCode2025.Utility
                 Console.WriteLine("Exception: " + e.Message);
             }
 
+            Console.WriteLine("Results " + results.Count());
+
             return results;
         }
     }
