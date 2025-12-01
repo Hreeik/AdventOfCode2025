@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventOfCode2025.Utility;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,14 @@ namespace AdventOfCode2025.Days
     {
         public void run()
         {
-            Console.WriteLine("Solution for Day 1 goes here.");
+            IList<String> lines = new FileReader().ReadFile("input_day1.txt");
+
+            foreach (var line in lines)
+            {
+                Console.WriteLine("first: " + line);
+                Console.WriteLine("count " + lines.Count());
+                break;
+            }
         }
     }
 }

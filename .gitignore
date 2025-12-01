@@ -1,41 +1,19 @@
-# Build results
+# Build folders
 bin/
 obj/
-out/
 
 # User-specific files
 *.user
 *.suo
-*.userosscache
-*.sln.docstates
+*.vs/
 
-# Visual Studio Code
-.vscode/
-
-# Rider
-.idea/
-
-# OS generated files
-.DS_Store
-Thumbs.db
+# Build outputs
+*.dll
+*.exe
 
 # NuGet packages
-*.nupkg
-# The packages folder can be ignored if you use PackageReference
 packages/
-# Uncomment if necessary: 
-# !packages/build/
-
-# Dotnet tool restore
-.dotnet/
+*.nupkg
 
 # Logs
 *.log
-
-# Test results
-TestResults/
-*.coverage
-*.coveragexml
-
-# Others
-*.vs/
