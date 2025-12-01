@@ -1,0 +1,41 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored if you use PackageReference
+packages/
+# Uncomment if necessary: 
+# !packages/build/
+
+# Dotnet tool restore
+.dotnet/
+
+# Logs
+*.log
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Others
+*.vs/
