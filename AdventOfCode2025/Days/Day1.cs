@@ -21,30 +21,37 @@ namespace AdventOfCode2025.Days
             foreach (var line in lines)
             {
                 char letter = line[0];
-                int rawNumber = int.Parse(line.Substring(1));
-                int number = rawNumber >= 100 ? rawNumber % 100 : rawNumber;
+                int number = int.Parse(line.Substring(1));
 
                 if (TowardHigher.Equals(letter))
                 {
-                    int added = currentValue + number;
-
-                    currentValue = added >= 100 ? added % 100 : added;
-
+                    for (int i = 0; i < number; i++)
+                    {
+                        currentValue = (currentValue + 1) % 100;
+                        if (currentValue == 0)
+                        {
+                            zeroCount++;
+                        }
+                    }
                 }
                 else if (TowardLower.Equals(letter))
                 {
-                    int sub = currentValue - number;
-
-                    currentValue = sub < 0 ? 100 + sub : sub;
-                } 
+                    for (int i = 0; i < number; i++)
+                    {
+                        currentValue = currentValue - 1;
+                        if (currentValue < 0)
+                        {
+                            currentValue = 99;
+                        }
+                        if (currentValue == 0)
+                        {
+                            zeroCount++;
+                        }
+                    }
+                }
                 else
                 {
                     Console.WriteLine("Unknown letter: " + letter);
-                }
-
-                if (currentValue == 0)
-                {
-                    zeroCount++;
                 }
             }
 
