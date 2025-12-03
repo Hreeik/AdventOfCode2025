@@ -6,15 +6,22 @@ using System.Text;
 
 namespace AdventOfCode2025.Days
 {
-    internal class Day1 : Day
+    internal class Day1 : IDay
     {
         private static int StartingPoint = 50;
         private static char TowardHigher = 'R';
         private static char TowardLower = 'L';
 
+        private IFileReader fileReader;
+
+        public Day1(IFileReader fileReader)
+        {
+            this.fileReader = fileReader;
+        }
+
         public void run()
         {
-            IList<String> lines = new FileReader().ReadFile("input_day1.txt");
+            IList<String> lines = fileReader.ReadFile(1);
             int currentValue = StartingPoint;
             int zeroCount = 0;
 

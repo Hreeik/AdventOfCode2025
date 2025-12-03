@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AdventOfCode2025.Days
 {
-    internal interface Day
+    internal interface IDay
     {
         void run();
     }

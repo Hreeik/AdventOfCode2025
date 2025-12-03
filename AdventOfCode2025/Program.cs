@@ -1,76 +1,63 @@
 ﻿using AdventOfCode2025.Days;
+using AdventOfCode2025.Utility;
 using System;
+using System.Reflection;
 
 namespace AdventOfCode2025
 {
     class Program
     {
+
+        private static string ExitCommand = "exit";
+
         static void Main(string[] args)
         {
-            try
+            while (true)
             {
-                Console.WriteLine("Enter day number:");
-                var input = Console.ReadLine();
-
-                Day? day = null;
-
-                switch (input)
+                try
                 {
-                    case "1":
-                        day = new Day1();
+                    Console.WriteLine("Enter day number (or type '" + ExitCommand + "' to quit):");
+                    var input = Console.ReadLine();
+
+                    if (input == null || string.Equals(input.Trim().ToLower(), ExitCommand))
+                    {
                         break;
-                    case "2":
-                        day = new Day2();
-                        break;
-                    case "3":
-                        day = new Day3();
-                        break;
-                    case "4":
-                        day = new Day4();
-                        break;
-                    case "5":
-                        day = new Day5();
-                        break;
-                    case "6":
-                        day = new Day6();
-                        break;
-                    case "7":
-                        day = new Day7();
-                        break;
-                    case "8":
-                        day = new Day8();
-                        break;
-                    case "9":
-                        day = new Day9();
-                        break;
-                    case "10":
-                        day = new Day10();
-                        break;
-                    case "11":
-                        day = new Day11();
-                        break;
-                    case "12":
-                        day = new Day12();
-                        break;
-                    default:
-                        Console.WriteLine("Day not implemented yet.");
-                        break;
+                    }
+
+                    if (!int.TryParse(input, out int dayNumber) || dayNumber < 1 || dayNumber > 12)
+                    {
+                        Console.WriteLine("Invalid day number. Please enter a number between 1 and 12.");
+                        continue;
+                    }
+
+                    var dayClassName = $"AdventOfCode2025.Days.Day{dayNumber}";
+                    var dayType = Type.GetType(dayClassName);
+
+                    if (dayType == null)
+                    {
+                        Console.WriteLine($"Day {dayNumber} not implemented yet.");
+                        continue;
+                    }
+
+                    var fileReader = new FileReader();
+                    IDay? day = Activator.CreateInstance(dayType, fileReader) as IDay;
+
+                    if (day != null)
+                    {
+                        day.run();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Failed to create Day {dayNumber} instance.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Process failed " + e.Message);
                 }
 
-                if (day != null)
-                {
-                    day.run();
-                }
-                else
-                {
-                    Console.WriteLine("Day not select.");
-                }
-            } 
-            catch (Exception e)
-            {
-                Console.WriteLine("Process failed " + e.Message);
+                Console.WriteLine();
             }
-
         }
-    } 
+    }
 }

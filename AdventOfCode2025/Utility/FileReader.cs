@@ -7,14 +7,14 @@ namespace AdventOfCode2025.Utility
     internal class FileReader : IFileReader
     {
 
-        public IList<String> ReadFile(string fileName)
+        public IList<String> ReadFile(int dayNumber)
         {
             IList<String> results = new List<String>() { };
             String line = null;
 
             try
             {
-                StreamReader streamReader = new StreamReader("Days\\Inputs\\" + fileName);
+                StreamReader streamReader = new StreamReader("Days\\Inputs\\input_day" + dayNumber + ".txt");
                 line = streamReader.ReadLine();
 
                 while (line != null)
@@ -30,7 +30,7 @@ namespace AdventOfCode2025.Utility
                 Console.WriteLine("Exception: " + e.Message);
             }
 
-            Console.WriteLine("Results " + results.Count());
+            Console.WriteLine("Results count " + results.Count());
 
             return results;
         }

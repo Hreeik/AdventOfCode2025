@@ -6,6 +6,6 @@ namespace AdventOfCode2025.Utility
 {
     internal interface IFileReader
     {
-        IList<String> ReadFile(string fileName);
+        IList<String> ReadFile(int dayNumber);
     }
 }
